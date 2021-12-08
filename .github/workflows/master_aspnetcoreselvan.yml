@@ -26,7 +26,7 @@ jobs:
         run: dotnet build  
         
       - name: Test with dotnet
-        run: dotnet test ./AspnetRunRealWorld.sln
+        run: dotnet test  --filter "FullyQualifiedName=AspnetRun.Infrastructure.Tests"
 
       - name: dotnet publish
         run: dotnet publish -c debug -o ${{env.DOTNET_ROOT}}/myapp
