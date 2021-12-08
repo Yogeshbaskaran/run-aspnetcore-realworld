@@ -56,5 +56,5 @@ jobs:
         with:
           app-name: 'aspnetcoreselvan'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8D610BF3867447E886EB6D64B5D6C124 }}
+          publish-profile: ${{ secrets.AZURE_WEB_APP_PUBLISH_PROFILE }}
           package: .
