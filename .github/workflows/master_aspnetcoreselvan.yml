@@ -54,7 +54,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'aspnetcoreselvan'
+          app-name: 'demoappselvan'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZURE_WEB_APP_PUBLISH_PROFILE }}
           package: .
