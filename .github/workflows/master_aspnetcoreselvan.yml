@@ -39,18 +39,19 @@ jobs:
 
 
  
-  sonarqube:
+  sonarQubeTrigger:
+    name: SonarQube Trigger
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-      with:
-        # Disabling shallow clone is recommended for improving relevancy of reporting
-        fetch-depth: 0
+    - uses: actions/checkout@master
     - name: SonarQube Scan
-      uses: sonarsource/sonarqube-scan-action@master
-      env:
-        SONAR_TOKEN: ffa1b83ba378f2bf67dadba75c49b417d979c240
-        SONAR_HOST_URL: https://sonarcloud.io/
+      uses: kitabisa/sonarqube-action@v1.1.0
+      with:
+        host: https://sonarcloud.io/
+        login: ffa1b83ba378f2bf67dadba75c49b417d979c240
+        projectKey: "selvan123"
+        projectName: "selvan123_run-aspnetcore-realworld"
+        projectVersion: "v0.0.1"
 
   deploy:
     runs-on: windows-latest
