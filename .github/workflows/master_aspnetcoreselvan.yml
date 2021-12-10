@@ -103,8 +103,16 @@ jobs:
           publish-profile: ${{ secrets.AZURE_WEB_APP_PUBLISH_PROFILE }}
           package: .
 
-
+  zap_scan:
+    runs-on: ubuntu-latest
+    name: Scan the webapplication
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: master
       - name: ZAP Scan
         uses: zaproxy/action-full-scan@v0.3.0
         with:
           target: 'http://demoappselvan.azurewebsites.net/'
+ 
