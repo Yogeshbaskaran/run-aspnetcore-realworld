@@ -38,16 +38,19 @@ jobs:
           path: ${{env.DOTNET_ROOT}}/myapp
 
 
-  sonarQubeTrigger:
-    name: SonarQube Trigger
+ 
+  sonarqube:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: SonarQube Scan
-      uses: kitabisa/sonarqube-action@v1.1.0
+    - uses: actions/checkout@v2
       with:
-        host: https://sonarcloud.io/
-        login: ffa1b83ba378f2bf67dadba75c49b417d979c240
+        # Disabling shallow clone is recommended for improving relevancy of reporting
+        fetch-depth: 0
+    - name: SonarQube Scan
+      uses: sonarsource/sonarqube-scan-action@master
+      env:
+        SONAR_TOKEN: ffa1b83ba378f2bf67dadba75c49b417d979c240
+        SONAR_HOST_URL: https://sonarcloud.io/
 
   deploy:
     runs-on: windows-latest
