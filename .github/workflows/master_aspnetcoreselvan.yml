@@ -114,5 +114,10 @@ jobs:
       - name: ZAP Scan
         uses: zaproxy/action-full-scan@v0.3.0
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          docker_name: 'owasp/zap2docker-stable'
           target: 'http://demoappselvan.azurewebsites.net/'
+          rules_file_name: '.zap/rules.tsv'
+          cmd_options: '-a'
+          
  
