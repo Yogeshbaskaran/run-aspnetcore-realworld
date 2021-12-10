@@ -24,15 +24,7 @@ jobs:
 
       - name: Build with dotnet
         run: dotnet build  
-
- 
-    
-      - name: SonarQube Scan
-        uses: kitabisa/sonarqube-action@v1.1.0
-        with:
-          host: https://sonarcloud.io/
-          login: ffa1b83ba378f2bf67dadba75c49b417d979c240
-
+  
       - name: Test with dotnet
         run: dotnet test  "./test/AspnetRun.Core.Tests/AspnetRun.Core.Tests.csproj"
 
@@ -44,6 +36,18 @@ jobs:
         with:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
+
+
+  sonarQubeTrigger:
+    name: SonarQube Trigger
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: SonarQube Scan
+      uses: kitabisa/sonarqube-action@v1.1.0
+      with:
+        host: https://sonarcloud.io/
+        login: ffa1b83ba378f2bf67dadba75c49b417d979c240
 
   deploy:
     runs-on: windows-latest
