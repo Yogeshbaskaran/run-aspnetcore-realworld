@@ -28,7 +28,6 @@ jobs:
  
     
       - name: SonarQube Scan
-      - uses: actions/checkout@master
         uses: kitabisa/sonarqube-action@v1.1.0
         with:
           host: https://sonarcloud.io/
