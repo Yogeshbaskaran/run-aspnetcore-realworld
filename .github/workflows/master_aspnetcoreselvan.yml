@@ -102,3 +102,9 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZURE_WEB_APP_PUBLISH_PROFILE }}
           package: .
+
+
+      - name: ZAP Scan
+        uses: zaproxy/action-full-scan@v0.3.0
+        with:
+          target: 'http://demoappselvan.azurewebsites.net/'
