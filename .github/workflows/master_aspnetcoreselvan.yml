@@ -68,11 +68,11 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: Test with dotnet
-        run: dotnet test  "./test/AspnetRun.Core.Tests/AspnetRun.Core.Tests.csproj" /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+        run: dotnet test  "./test/AspnetRun.Core.Tests/AspnetRun.Core.Tests.csproj" 
 
-      - name: Execute powershell
-        shell: pwsh
-        run: Get-ChildItem -Path './test/AspnetRun.Core.Tests/' -Filter coverage.opencover.xml -Recurse -ErrorAction SilentlyContinue -Force
+  #    - name: Execute powershell
+  #      shell: pwsh
+  #      run: Get-ChildItem -Path './test/AspnetRun.Core.Tests/' -Filter coverage.opencover.xml -Recurse -ErrorAction SilentlyContinue -Force
 
       - name: dotnet publish
         run: dotnet publish -c debug -o ${{env.DOTNET_ROOT}}/myapp
