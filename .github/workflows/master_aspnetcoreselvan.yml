@@ -70,7 +70,7 @@ jobs:
       - name: Test with dotnet
         run: dotnet test  "./test/AspnetRun.Core.Tests/AspnetRun.Core.Tests.csproj" /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
 
-      - name: Execute poershell
+      - name: Execute powershell
         shell: pwsh
         run: Get-ChildItem -Path './test/AspnetRun.Core.Tests/' -Filter coverage.opencover.xml -Recurse -ErrorAction SilentlyContinue -Force
 
