@@ -101,7 +101,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'demoappselvan'
+          app-name: 'DotNetCoreDemoApp'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZURE_WEB_APP_PUBLISH_PROFILE }}
           package: .
@@ -120,7 +120,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           docker_name: 'owasp/zap2docker-stable'
-          target: 'http://demoappselvan.azurewebsites.net/'
+          target: 'http://DotNetCoreDemoApp.azurewebsites.net/'
           rules_file_name: '.zap/rules.tsv'
           cmd_options: '-a'
           
