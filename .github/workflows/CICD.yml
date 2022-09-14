@@ -61,7 +61,12 @@ jobs:
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"selvan123_run-aspnetcore-realworld" /o:"selvan123-github" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"          
           dotnet build  
+          dotnet test  "./test/AspnetRun.Core.Tests/AspnetRun.Core.Tests.csproj" 
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+
+
+#      - name: Unit test with dotnet
+#        run: dotnet test  "./test/AspnetRun.Core.Tests/AspnetRun.Core.Tests.csproj" 
 
       - name: SonarQube Quality Gate check
         uses: sonarsource/sonarqube-quality-gate-action@master
@@ -71,9 +76,6 @@ jobs:
           scanMetadataReportFile: .sonarqube/out/.sonar/report-task.txt
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-      - name: Unit test with dotnet
-        run: dotnet test  "./test/AspnetRun.Core.Tests/AspnetRun.Core.Tests.csproj" 
 
   #    - name: Execute powershell
   #      shell: pwsh
